@@ -5,6 +5,7 @@
 \usepackage{parskip}
 \usepackage[]{fancyhdr}
 \usepackage{pgfplots}
+\usepackage{mdframed}
 \pgfplotsset{compat=1.18}
 \setlength{\headheight}{15pt}
 \tcbuselibrary{breakable}
@@ -172,6 +173,53 @@ Voltage is simply the difference in electric potential:
 \[\Delta V = V_f - V_0\]
 
 Be careful when talking about electric potential and voltage; they are not the same thing.
+
+\begin{Problem}
+    A total charge $Q$ is uniformly distributed through-out a spherical volume of radius $a$. Write an expression for the potential difference between the center of the sphere and its surface.
+
+    \tcblower
+
+    \textit{Solution. } First, let's underline the strategy for this problem. Electrical potential can be found with two ways: summation of charged particles or the integration of electric field. It is impractical to sum up the many particles that make up a 3D object, but we have a way to find the electric field equation for a sphere: Gauss's Law.
+    \begin{equation*}
+        \oint E \cdot dA = \frac{q_{enc}}{\epsilon_0}
+    \end{equation*}
+    We need to find $q_{enc}$:
+    \begin{equation*}
+        q_{enc}=\int \rho dV \newline
+    \end{equation*} 
+    Finding $\rho$:
+    \begin{equation*}
+        \begin{split}
+            \rho & = \frac{Q}{V} \\
+            &=\frac{Q}{\frac{4}{3} \pi a^3}
+        \end{split}  
+    \end{equation*}
+    Substituting $\rho$ and finding the volume $V = \int dV$:
+    \begin{equation*}
+        \begin{split}
+            q_{enc} &=\int \rho dV \\
+            &=\rho \int dV \\
+            &=\frac{Q}{\frac{4}{3} \pi a^3} \int_{0}^{x}4 \pi r^2 dr \\ 
+            &=\frac{Qx^3}{a^3}
+        \end{split}  
+    \end{equation*}
+    When given a radius $\{ x: 0 \leq x \leq a\}$, the equation finds the charge enclosed by a sphere of radius $x$ within the charged sphere of radius $a$.
+
+    Finishing the Gauss's Law integral:
+    \begin{equation*}
+        E \cdot 4 \pi x^2 = \frac{Qx^3}{\epsilon_0 a^3}
+        E = \frac{Qx}{4 \pi \epsilon_0 a^3}
+    \end{equation*}
+    Integrating $E$:
+    \begin{equation*}
+        \begin{split}
+            V &= -\int_{a}^{0} \frac{Qx}{4 \pi \epsilon_0 a^3} dx \\
+            & = \frac{Q}{4 \pi \epsilon_0 a^3} \int_{0}^{a} x dx \\
+            & = \frac{Q}{4 \pi \epsilon_0 a^3} \cdot \frac{x^2}{2} \\
+            & = \frac{Q}{8 \pi \epsilon_0 a}
+        \end{split}
+    \end{equation*}
+\end{Problem}
 
 \section*{Topic 9.3 - Conservation of Electric Energy}
 
