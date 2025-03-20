@@ -66,4 +66,132 @@ In E\&M, "ground" is a reference point where electric potential is zero. It can 
     \end{itemize}
 \end{Problem}
 
+\section*{10.3 - Capacitors}
+
+Capacitors are used to store energy by moving charges to two plates with an applied potential difference. When a capacitor is connected to a battery, electrons on the plate connected to the positive terminal are pulled away, leaving a positive charge, while the negative terminal pushes electrons towards the other plate, giving it a negative charge. When the battery is removed, the capacitor remains in its charged state until a load is connected (for example, an LED lightbulb), following which the electrons flow from the negatively charged plate to the positively charged plate, illuminating the bulb.
+
+The capacitance of a capacitor is defined as 
+\begin{equation*}
+    C= \frac{Q}{\Delta V}
+\end{equation*}
+
+measured in farads (F), or coulombs per volt.
+
+The magnitude of electric field of a parallel plate capacitor can be determined using Gauss's Law, where A is the area of a plate in the capacitor. 
+\begin{align*}
+    \oint E \cdot dA &= \frac{q_{enc}}{\epsilon_0} \\
+    E \cdot A &= \frac{Q}{\epsilon_0} \\
+    E &= \frac{\sigma}{\epsilon_0}
+\end{align*}
+
+\subsection*{Capacitance of Various Capacitor Geometries}
+
+Solving for the capacitance of a capacitor involves three steps:
+
+\begin{enumerate}
+    \item Find the electric field between the two surfaces with Gauss's Law
+    \item Find $|\Delta V|$ by integrating the electric field over the distance between the two surfaces.
+    \item Substitute the derived $|\Delta V|$ into the equation for capacitance: $C = \frac{Q}{\Delta V}$
+\end{enumerate}
+
+\subsubsection*{Parallel Plate Capacitor}
+
+\textbf{Step 1: Electric Field}
+
+We retain the previously derived equation for electric field: $E = \frac{\sigma}{\epsilon_0}$
+
+\textbf{Step 2: Voltage}
+
+Integrating E:
+\begin{align*}
+    \Delta V & = - \int_{a}^{b}E \, dx \\
+    &= - \int_{a}^{b} \frac{\sigma}{\epsilon_0} \, dx\\
+    &= -\frac{\sigma}{\epsilon_0} \int_{a}^{b} \, dx\\
+    &= -\frac{\sigma}{\epsilon_0} (b-a)
+    = -\frac{\sigma \, d}{\epsilon_0}
+    = -\frac{Q \, d}{A \, \epsilon_0}
+\end{align*}
+
+\textbf{Step 3: Substitution}
+\begin{equation*}
+    C = \frac{\epsilon_0 \, A}{d}
+\end{equation*}
+
+\subsubsection*{Coaxial Cable Capacitor}
+
+Where $r_a$ is the radius of the inner cylinder, $r_b$ is the radius of the outer shell, and $L$ is the length of the capacitor.
+
+\textbf{Step 1: Electric Field}
+\begin{align*}
+    &E \, (2\pi r L) = \frac{Q}{\epsilon_0} \\
+    &E = \frac{Q}{2 \pi \epsilon_0 r L}
+\end{align*}
+
+\textbf{Step 2: Voltage}
+
+Integrating E:
+\begin{align*}
+    \Delta V & = - \int_{a}^{b}E \, dx \\
+    &= - \int_{r_a}^{r_b} \frac{Q}{2 \pi \epsilon_0 r L} \, dr\\
+    &= - \frac{Q}{2 \pi \epsilon_0 L} \int_{r_a}^{r_b} \frac{1}{r} \, dr\\
+    & = - \frac{Q (\ln{r_b}-\ln{r_a})}{2 \pi \epsilon_0 L}
+    = - \frac{Q}{2 \pi \epsilon_0 L}\ln{\frac{r_b}{r_a}}
+\end{align*}
+
+\textbf{Step 3: Substitution}
+\begin{equation*}
+    C = \frac{2 \pi \epsilon_0 L}{\ln{\frac{r_b}{r_a}}}
+\end{equation*}
+
+\subsubsection*{Concentric Sherpicial Capacitor}
+
+Where $r_a$ is the radius of the inner sphere and $r_b$ is the radius of the outer sphere.
+
+\textbf{Step 1: Electric Field}
+\begin{align*}
+    &E \, (4\pi r^2) = \frac{Q}{\epsilon_0} \\
+    &E = \frac{Q}{4 \pi \epsilon_0 r^2}
+\end{align*}
+
+\textbf{Step 2: Voltage}
+
+Integrating E:
+\begin{align*}
+    \Delta V & = - \int_{a}^{b}E \, dx \\
+    &= - \int_{r_a}^{r_b} \frac{Q}{ 4\pi \epsilon_0 r^2} \, dr\\
+    &= - \frac{Q}{4 \pi \epsilon_0} \int_{r_a}^{r_b} \frac{1}{r^2} \, dr\\
+    & = - \frac{Q}{4 \pi \epsilon_0}(\frac{1}{r_b}-\frac{1}{r_a})
+\end{align*}
+
+\textbf{Step 3: Substitution}
+\begin{align*}
+    C &= \frac{4 \pi \epsilon_0}{\frac{1}{r_b}-\frac{1}{r_a}}\\
+    &= 4 \pi \epsilon_0(\frac{r_{a}r_{b}}{r_{b}-r_a})
+\end{align*}
+
+\begin{Problem}
+    Two plates of a fully charged parallel plate capacitor are moved closer together while a 9V battery is connected. Does the magnitude of the electric field increase, decrease, or remain constant? 
+    \tcblower
+    \textit{Solution. } Increases. Since the voltage remains constant and distance decreases, according to the equation $E=\frac{\Delta V}{d}$, $E$ increases.
+\end{Problem}
+
+\subsection*{Potential Energy of Capacitors}
+
+The potential energy stored by a capacitor can be represented three ways:
+\begin{equation*}
+    U_C=\frac{Q^2}{2C}=\frac{1}{2}C(\Delta V)^2=\frac{1}{2}Q\Delta V
+\end{equation*}
+
+\newpage
+
+\section*{10.4 - Dielectrics}
+
+All dielectrics are instulators, but not all insulators are good dielectrics. A dielectric is a material that cannot conduct electricity but can be polarized when placed in an electric field. When a dielectric is placed in an electric field, the atoms in the dielectric become polarized, creating their own weaker electric field opposite the capacitor that reduces the overall electric field. Since electric field and voltage are related $E = Vd$, a decrease in $E$ results in a decrease in $V$. By the formula $C=\frac{Q}{\Delta V}$, a decrease in $\Delta V$ results in an increase in $C$.
+
+Filling a capacitor with a dielectric material with dielectric constant $\kappa$ increases its capacitance by a factor of $\kappa$, that is 
+\begin{equation*}
+    C = \kappa \epsilon_0 \frac{A}{d} 
+\end{equation*}
+for a parallel plate capacitor.
+
 \end{document}
