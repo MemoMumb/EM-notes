@@ -1,0 +1,64 @@
+\documentclass[12pt, titlepage]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{parskip}
+\usepackage[]{fancyhdr}
+\usepackage{pgfplots}
+\usepackage{mdframed}
+\pgfplotsset{compat=1.18}
+\setlength{\headheight}{15pt}
+\tcbuselibrary{breakable}
+
+\title{Electric Circuits}
+\author{Matthew Pan}
+\date{March 2025}
+
+\newtcolorbox{Problem}{colback=blue!5!white,colframe=blue!50!black,title=Problem, breakable=true}
+
+\begin{document}
+
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyhead[L]{Pan}
+\fancyhead[R]{\thepage}
+
+\maketitle
+
+\section*{11.1 Electric Current}
+\subsection*{Electric Current}
+
+Electric current is the movement of charge carries, such as electrons, through a material. It measures the number of coulombs of charge that move through an area in a given time. The unit of electric current is the ampere, or coulombs per second.
+\begin{equation*}
+    I = \frac{Q}{\Delta t} = \frac{dq}{dt}
+\end{equation*}
+
+In a wire, each of the charge carriers move with many different velocities, with the net movement of charge carriers being represented by the drift velocity, $v_d$. We can also calculate electric current through the formula 
+\begin{equation*}
+    I = nqv_{d}A
+\end{equation*}
+Where:
+\begin{itemize}
+    \item $n$ is the number of charged particles per cubic meter of volume
+    \item $q$ is the quantity of of the charge
+    \item $A$ is the cross-sectional area of the wire
+\end{itemize}
+To create a movement of a fluid in a pipe, there must be a pressure difference between the ends of a pipe. Likewise, to create an electric current, there must be a potential difference between the ends of the wire. This electric potential difference is also referred to as an electromotive force, or $\epsilon$. We can create this force through a battery or generator.
+\subsection*{Electric Current Density}
+
+Recall that the electric current directly depends on the cross sectional area of the wire. If we were to measure a smaller cross sectional area within the wire, we would get a smaller value. The quantity that stays the same for both areas is the electric current density, which is a vector quantity. This can be intuitively derived:
+\begin{equation*}
+    J = \frac{I}{A} = nqv_d
+\end{equation*}
+Current is the dot product of current density and area.
+\begin{equation*}
+    I = \vec{J} \cdot \vec{A} = ||\vec{J}||\,||\vec{A}|| \cos{\theta}
+\end{equation*}
+The idea of charge flow as current implies that electric current has a direction, but not like a traditional vector quantity. Electric current is relative to the charge carriers and does not obey the laws of vector addition. By convention, the direction of current in a wire is based on the movement of positive charges, however, the charge carriers in a wire are electrons, which have a negative charge. Therefore, electrons in a wire move in the opposite direction as conventional current.
+
+\subsection*{Current and Electric Field}
+Recall that an electric field causes charge carriers to move through a wire. An increase in electric field strength causes an increase in electromotive force, which increases the current density. Current density and electric field are proportionally related to each other.
+
+
+\end{document}
