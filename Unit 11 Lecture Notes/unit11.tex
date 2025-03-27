@@ -6,6 +6,7 @@
 \usepackage[]{fancyhdr}
 \usepackage{pgfplots}
 \usepackage{mdframed}
+\usepackage{multicol}
 \pgfplotsset{compat=1.18}
 \setlength{\headheight}{15pt}
 \tcbuselibrary{breakable}
@@ -55,10 +56,46 @@ Current is the dot product of current density and area.
 \begin{equation*}
     I = \vec{J} \cdot \vec{A} = ||\vec{J}||\,||\vec{A}|| \cos{\theta}
 \end{equation*}
-The idea of charge flow as current implies that electric current has a direction, but not like a traditional vector quantity. Electric current is relative to the charge carriers and does not obey the laws of vector addition. By convention, the direction of current in a wire is based on the movement of positive charges, however, the charge carriers in a wire are electrons, which have a negative charge. Therefore, electrons in a wire move in the opposite direction as conventional current.
 
+And if electric current density is not constant throughtout the cross section of a wire:
+\begin{equation*}
+    I = \int \vec{J} \cdot d\vec{A}
+\end{equation*}
+The idea of charge flow as current implies that electric current has a direction, which contradicts the idea of current being a dot product. Despite this, current does have a direction, but not like a traditional vector quantity. Electric current is relative to the charge carriers and does not obey the laws of vector addition. By convention, the direction of current in a wire is based on the movement of positive charges, however, the charge carriers in a wire are electrons, which have a negative charge. Therefore, electrons in a wire move in the opposite direction as conventional current.
+\begin{Problem}
+    Suppose a wire with a radius of 2mm has an electric current density that varies with radial distance $r$ as $J = ar^2$, where $a=1.5\times 10^{10}$ and $r$ is in meters. What is the current flowing through the outer portion of the wire between $\frac{R}{2}$ and $R$?
+    \tcblower
+    \textit{Solution. } We can sum together concentric rings with an infinitely small thickness $dr$ to find $dA$. Find the area of a infinitely thin ring at radius $r$ with an area $dA$ by imagining bending the ring into an infinitely thin rectangle with width $dr$. Since we bent the rectangle from a circle, the length of the rectangle is the circumfrence of the circle. The area of the rectangle is thus 
+    \begin{equation*}
+        dA = 2\pi r dr
+    \end{equation*}
+    With the limits of integration being $\frac{R}{2}$ and $R$, we can replace $J$ with the given equation and $dA$. Since $J$ and $A$ are in the same direction, there is no need for additional consideration. 
+
+    \begin{align*}
+        I &= \int J dA \\
+        &= \int_{\frac{R}{2}}^{R}ar^2\cdot 2\pi r dr \\
+        &= \frac{15}{32}\pi aR^4 \\
+        &= \frac{15}{32} \pi (1.5 \times 10^{10})(0.002)^4= 0.35A
+    \end{align*}
+\end{Problem}
 \subsection*{Current and Electric Field}
 Recall that an electric field causes charge carriers to move through a wire. An increase in electric field strength causes an increase in electromotive force, which increases the current density. Current density and electric field are proportionally related to each other.
 
+\section*{10.2 Simple Electric Circuits}
+
+An electric circuit is a complete loop through which current can flow. A simple electric circuit is composed of electrical loops, which can include the following individually or in combinations.
+\begin{multicols}{2}
+    \begin{itemize}
+        \item Wires
+        \item Batteries
+        \item Resistors
+        \item Lightbulbs
+        \item Capacitors
+        \item Inductors
+        \item Switches
+        \item Ammeters
+        \item Voltmeters
+    \end{itemize}
+\end{multicols}
 
 \end{document}
