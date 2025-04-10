@@ -7,6 +7,7 @@
 \usepackage{pgfplots}
 \usepackage{mdframed}
 \usepackage{multicol}
+\usepackage{svg}
 \pgfplotsset{compat=1.18}
 \setlength{\headheight}{15pt}
 \tcbuselibrary{breakable}
@@ -81,9 +82,9 @@ The idea of charge flow as current implies that electric current has a direction
 \subsection*{Current and Electric Field}
 Recall that an electric field causes charge carriers to move through a wire. An increase in electric field strength causes an increase in electromotive force, which increases the current density. Current density and electric field are proportionally related to each other.
 
-\section*{10.2 Simple Electric Circuits}
+\section*{11.2 Simple Electric Circuits}
 
-An electric circuit is a complete loop through which current can flow. A simple electric circuit is composed of electrical loops, which can include the following individually or in combinations.
+An electric circuit is a complete loop through which current can flow. A simple electric circuit is composed of electrical loops, which can include the following individually or in combinations. Make sure to know the symbols for each circuit element and know which side of a battery is positive or negative in a diagram! 
 \begin{multicols}{2}
     \begin{itemize}
         \item Wires
@@ -97,5 +98,208 @@ An electric circuit is a complete loop through which current can flow. A simple 
         \item Voltmeters
     \end{itemize}
 \end{multicols}
+
+\section*{11.3 Resistance, Resistivity, and Ohm's law}
+
+ Circuit elements often have a rated amp limit that shows how much current can flow through the element before it malfunctions. In circuits, we can reduce the amount of current flowing through a wire using a resistor.\textbf{ Resistance} is the opposition of charges moving through a circuit - it is a property of resistors. \textbf{Resistivity} describes a material's general resistance towards current. Resistance is proportionally related to resistivity and length, and inversely related to area: 
+ \begin{equation*}
+    R = \frac{\rho L}{A}
+ \end{equation*}
+
+ In a simple circuit composed of a lightbulb and battery, current is constant throughout the circuit, however, \textit{less} charges may be moving \textit{faster} after passing the resistor. In the lightbulb, the increased speed of charge carriers increases the number of collisions between particles, which causes energy loss (in the form of light in this case) in a material with a high resistance (the filament). With the increased speed and collisions, there is a decrease in electric potential accross the resistor, sometimes referred to as a \textbf{voltage drop}.
+ \subsection*{Circuits with Resistors}
+ The formula for combined resistors in series is
+ \begin{align*}
+    R_{eq,s} &= \sum_{i}R_{i} \\
+    &= R_1+R_2+R_3+ \cdots
+ \end{align*}
+ The overall resistance is increased.
+
+ The formula for combined resistors in parallel is
+ \begin{align*}
+    \frac{1}{R_{eq,p}} &= \sum_{i}\frac{1}{R_{i}} \\
+    &= \frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3}+ \cdots
+ \end{align*}
+ The overall resistance is decreased.
+
+ Ohm's law states
+ \begin{equation*}
+    I = \frac{\Delta V}{R}
+ \end{equation*}
+ For components in series, current stays the same. For components in parallel, the voltage drop remains the same. We can use this relationship to analyze simple circuits involving multiple resistors, such as in the following example. When analyzing these circuits, a general strategy is to combine resistors first, identify the voltage drop or current to be constant depending on if the components are connected in series or in parallel next, then separate resistors to find the unknown.
+
+ \begin{Problem}
+    Find the current running through the 2$\Omega$ resistor.
+    \begin{center}
+        \includegraphics*[width=6cm]{media/circuit1.png}
+    \end{center}
+    \tcblower
+
+    \textit{Solution. }We can combine the resistors first, and then apply the fact that current remains constant through components in series to solve for the current running through the 2$\Omega$ resistor.
+    \begin{align*}
+        R_{eq,s} &= \sum_{i}R_{i} \\
+        &= R_1+R_2+R_3 \\
+        &= 1 + 2 + 3 = 6\Omega
+     \end{align*}
+     Applying Ohm's law: 
+     \begin{align*}
+        I &= \frac{\Delta V}{R} \\
+        &= \frac{1}{2}A
+     \end{align*}
+     Since each circuit component recieves the same current, the 2$\Omega$ resistor has a current of half an amp running through it.
+ \end{Problem}
+\section*{11.4 Electric Power}
+
+Power is the rate of energy dissipation or transformation, measured in watts, or joules per second. Three equatiions for power are commonly used, though only the first one is found on the formula sheet. The remaining two formulas can easily be memorized or derived through Ohm's law.
+\begin{equation*}
+    P = \boxed{I \Delta V} = \frac{\Delta V^2}{R} = I^2R
+\end{equation*}
+
+\begin{Problem}
+    A 40-watt bulb and 100-watt bulb are connected in series. Which bulb glows brighter?
+    \tcblower
+    \textit{Solution. } The 40-watt bulb glows brighter. It's important to note that the 100 watt bulb glows brighter \textit{only at its rated voltage}. Since the two bulbs are connected in series, they \textit{do not have the same voltage drop}. Assume the rated voltage for both bulbs is 120V. 
+    
+    For the 40W Bulb:
+    \begin{equation*}
+        R = \frac{\Delta V^2}{P} = \frac{120^2}{40} = 360\Omega
+    \end{equation*}
+    For the 100W Bulb:
+    \begin{equation*}
+        R = \frac{\Delta V^2}{P} = \frac{120^2}{100} = 144\Omega
+    \end{equation*}
+
+    Since the current flowing through both bulbs is the same and power is calculated $P = I^2R$, the bulb with the higher resistance has the higher energy dissipation.
+\end{Problem}
+
+\section*{11.5 Compound Direct Circuits}
+
+\subsection*{Ideal/Non-Ideal Batteries}
+Non-ideal batteries have a resistance that varies with the amount of current pulled. These batteries can be treated as a resistor attached to an ideal battery. If a non-ideal battery has an electromotive force $\epsilon$, then the voltage between the two terminals of the battery is $\Delta V_{terminal}$
+\begin{equation*}
+    \Delta V_{terminal} = \epsilon - IR
+\end{equation*}
+
+\subsection*{Ideal/Non-Ideal Ammeters and Voltmeters}
+
+Ammeters must be connected in series to measure the current passing through a wire. An ideal ammeter has no resistance so that they do not affect the current in the component that they are in series with. If the ammeter were to have a resistance, then the actual resistance of the circuit would be greater than what is expected, which will negatively affect the ammeter reading. The following ammeter is connected to measure the current flowing through resistor $R_2$.
+\begin{center}
+    \includegraphics*[width=6cm]{media/ammeter.png}
+\end{center}
+Voltmeters must be connected in parallel to compare the electric potential of two parts of a circuit. An ideal voltmeter has infinite resistance so that no current flows through the voltmeter and the overall resistance of the circuit is unaffected. The following voltmeter is connected to measure the voltage drop due to the resistor.
+\begin{center}
+    \includegraphics*[width=6cm]{media/voltmeter.png}
+\end{center}
+
+\section*{11.6 Kirchhoff's Loop Rule}
+
+Kirchhoff's loop rule states that a complete loop around circuit has a potential difference of zero.
+\begin{equation*}
+    \sum \Delta V = 0
+\end{equation*}
+Kirchhoff's loop rule can be used in conjunction with Kirchoff's junction rule to analyze more complex electric circuits, especially those containing multiple batteries and/or capacitors. Steps to identify/draw a loop: 
+\begin{enumerate}
+    \item Choose a starting point. The loop must start and end at the same point.
+    \item Sketch in currents. Direction does not matter.
+    \item Sketch in loops. Direction does not matter.
+    \item Follow the loop and determine whether voltage contribution is positive or negative.
+\end{enumerate}
+For a battery, if the loop goes from negative to positive, the voltage contribution is positive: there is a ``boost'' in voltage. If the loop goes from positive to negative, the voltage contribution is negative: the battery acts like a resistor.
+
+For a resistor, if the loop and the current go in the same direction, there is a negative voltage contribution. If the loop and the current go in different directions, there is a positive voltage contribution.
+
+\textbf{You should watch 11.6 Daily Video 2 starting at 2:42 or The Organic Chemistry Tutor's video on Kirchhoff's Voltage Law to see how to draw the loops and write the expression!}
+
+\section*{11.7 Kirchhoff's Junction Rule}
+Kirchhoff's junction rule states that the current going into a junction is the equal to the current going out of a junction.
+\begin{equation*}
+    \sum I_{in} = \sum I_{out}
+\end{equation*}
+
+\begin{Problem}
+    Compare the currents $I_X$, $I_Y$, $I_Z$
+    \begin{center}
+        \includegraphics*[width=6cm]{media/junction1.png}  
+    \end{center}
+
+    \tcblower
+    \textit{Solution. }
+    \begin{itemize}
+        \item For $I_X$, 7A is drawn from the bottom right, in addition to 8A from the left. So, $7+8=15$A leaves from the top right.
+        \item For $I_Y$, 4A is drawn into a junction, with 3A from that junction going up. So, 1A leaves from the bottom right. Since 8A is entering the circuit and 1A is leaving from the bottom right, 7A must be exiting from the top right.
+        \item $I_Z$ represents the same scenario as $I_Y$
+    \end{itemize}
+    Therefore, $I_X>I_Y=I_Z$
+    
+\end{Problem}
+
+\textbf{You should watch 11.7 Daily Video 2 starting at or The Organic Chemistry Tutor's video on KVL and KCL to see how to analyze the circuits! (https://www.youtube.com/watch?v=2Zu3ppq3n8I)}
+
+\section*{11.8 RC Circuits}
+\subsection*{Behaviors of Capacitors}
+Recall that a basic capacitor is composed of two plates with a dielectric in between. In DC electric circuits, charge does not technically flow between the plates of a capacitor traditionally, since a dielectic separates the two plates. Instead, the presence of electrons on one plate creates a repelling force that drives electrons away from the opposite plate, creating a current. However, for simplicity, current can be imagined as flowing through a capacitor.
+\begin{itemize}
+    \item When a capacitor is uncharged and connected, it behaves as a short circuit initially.
+    \item When a capacitor is charging, the current ``flowing'' through the capacitor decreases gradually, until the capacitor is fully charged and voltage drops to zero.
+    \item When a capacitor is charged, it acts like an open switch: no current ``flows'' through the capacitor.
+\end{itemize}
+\subsection*{Capacitors in Series and Parallel}
+
+The formula for combined capcitors in series is
+\begin{align*}
+   \frac{1}{C_{eq,s}} &= \sum_{i}\frac{1}{C_{i}} \\
+   &= \frac{1}{C_1}+\frac{1}{C_2}+\frac{1}{C_3}+ \cdots
+\end{align*}
+The overall capcitance is decreased.
+
+The formula for combined capcitors in parallel is
+\begin{align*}
+   C_{eq,p} &= \sum_{i}C_{i} \\
+   &= C_1+C_2+C_3+ \cdots
+\end{align*}
+The overall capcitance is increased.
+
+\subsection*{Capacitors in RC Circuits}
+If we want to find how the voltage accross the plates of a capcitor change as a function of time while the capacitor is charging, then we need to use differential equations. Imagine a circuit with a battery, a resistor, and a capacitor in series. Kirchhoff's Loop Rule tells us that
+\begin{align*}
+    \sum \Delta V &= 0 \\
+    V_{battery} -V_{resistor} - V_{capacitor} &= 0 \\ 
+    V_b-IR- V_c &= 0
+\end{align*}
+Recall that
+\begin{equation*}
+    Q=CV_c \quad \textrm{and} \quad
+    I = \frac{dQ}{dt}
+\end{equation*}
+Taking the derivative with respect to time, keeping capacitance constant:
+\begin{equation*}
+    I= \frac{dQ}{dt} = C\frac{dV_c}{dt}
+\end{equation*}
+Substituting into the equation given by Kirchhoff's Loop Rule and solving the differential equation:
+\begin{align*}
+    V_b-RC \, \frac{dV_c}{dt}-V_c &= 0\\
+    -RC \, \frac{dV_c}{dt}&=V_c-V_b \\
+    -RC \, dV_c &= (V_c-V_b)dt \\
+    \frac{dV_c}{V_c-V_b} &= -\frac{dt}{RC} \\
+    \int_{0}^{V_c(t)}\frac{dV_c}{V_c-V_b} &= \int_{0}^{t}-\frac{dt}{RC} \\
+    \ln |V_c(t)-V_b|-\ln |-V_b| &= -\frac{t}{RC} \\
+    \ln |\frac{V_c(t)-V_b}{-V_b}| &= -\frac{t}{RC} \\
+    \frac{V_c(t)-V_b}{-V_b} &= e^{-\frac{t}{RC}} \\
+    V_c(t)&=\boxed{V_b(1-e^{-\frac{t}{RC}})}
+\end{align*}
+A similar equation for a discharging capacitor can be found by removing the battery and letting $V_c$ be positive.
+\begin{equation*}
+    V_c(t)=\boxed{V_be^{-\frac{t}{RC}}}
+\end{equation*}
+\subsection*{Time Constants in RC Circuits}
+The time constant of an RC circuit is a measure of how quickly the capacitor will charge or discharge.
+\begin{equation*}
+    \tau = R_{eq}C_{eq}
+\end{equation*}
+$R_{eq}$ and $C_{eq}$ are the total resistance of the circuit and the total capacitance of the circuit, respectively.
+\begin{itemize}
+    \item When a capacitor is charging, the capacitor will be 63\% full at $t=RC$
+    \item When a capacitor is discharging, the capacitor will be 37\% full at $t=RC$
+\end{itemize}
 
 \end{document}
