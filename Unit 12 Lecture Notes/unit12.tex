@@ -1,0 +1,39 @@
+\documentclass[12pt, titlepage]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{parskip}
+\usepackage[]{fancyhdr}
+\usepackage{pgfplots}
+\usepackage{mdframed}
+\usepackage{multicol}
+\pgfplotsset{compat=1.18}
+\setlength{\headheight}{15pt}
+\tcbuselibrary{breakable}
+
+\title{Magnetic Fields and Electromagnetism}
+\author{Matthew Pan}
+\date{April 2025}
+
+\newtcolorbox{Problem}{colback=blue!5!white,colframe=blue!50!black,title=Problem, breakable=true}
+
+\begin{document}
+
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyhead[L]{Pan}
+\fancyhead[R]{\thepage}
+
+\maketitle
+
+\section*{12.1 Magentic Fields}
+
+A magnetic field is a vector field that describes the magnetic force exerted on moving charges, electric currents, or magnetic materials. Since magnetic fields are created by magnetic dipoles, which always have a north and a south pole, magnetic field lines always form a closed loop: north to south outside a magnet and south to north inside a magnet.
+
+Because magnetic poles always occur as dipoles, the net magnetic field through any closed surface will always be zero:
+\begin{equation*}
+    \oint B \cdot dA = 0
+\end{equation*}
+
+\end{document}
