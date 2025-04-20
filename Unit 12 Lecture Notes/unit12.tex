@@ -221,4 +221,102 @@ Each $d\vec{B}$ vector is pointing out from the axis at an angle $\beta$. We can
     \item $\cos (\beta) = \frac{R}{\sqrt{R^2+h^2}}$ --- The angle $\beta$ is equal to the angle formed by $R$ and $r$ 
 \end{itemize}
 
+\section*{12.4 Ampere's Law}
+
+Ampere's Law relates the magnetic field created in space to the current enclosed by an imagnary closed path called an Amperian loop. Ampere's Law with Maxwell's extension is called Maxwell's Fourth Equation.
+\begin{equation*}
+    \oint \vec{B} \cdot d\vec{l}= \mu_0I_{enc} + \mu_0\epsilon_0\frac{d\phi_E}{dt}
+\end{equation*}
+\begin{minipage}{\textwidth}
+Where
+\begin{itemize}
+    \item $\vec{B} \cdot d\vec{l}$ is the dot product of the magnetic field and a small section of the Amperian loop.
+    \item $\mu_0I_{enc}$ is the product of the permeability of free space and the current enclosed by the Amperian loop.
+    \item $\mu_0\epsilon_0\frac{d\phi_E}{dt}$ is Maxwell's extension to Ampere's law. Maxwell's extension is not on the formula sheet, nor is applying it tested, but \textit{you should know that a changing electric field generates a magnetic field.}
+\end{itemize}
+\end{minipage}
+
+When applying Ampere's Law to AP Physics C, we can make a few simplifications. These also provide the guidelines for drawing an Amperian loop:
+\begin{itemize}
+    \item We can simplify the dot product to only find the magnitude
+    \item The magnetic field should always be constant at the loop so that it can be pulled out of the integral
+    \item The magnetic field should always point in the same direction as the Amperian loop so that $\cos\theta=1$
+\end{itemize}
+After this, we are left with 
+\begin{equation*}
+    B \oint dl = \mu_0I_{enc}
+\end{equation*}
+$\oint dl$ will become the length of the path (usually the perimeter). Let's take a look at a few cases.
+
+\subsubsection*{Infinitely Long Wire}
+
+\begin{center}
+    \includegraphics*[height=6cm]{media/amperelongwire.png}
+\end{center}
+\begin{align*}
+    \oint \vec{B} \cdot d\vec{l} &= \mu_0I_{enc} \\
+    B(2\pi R) &= \mu_0 I \\
+    B &= \boxed{\frac{\mu_0 I}{2\pi R}}
+\end{align*}
+We get the same answer as using the Biot-Savart law with a quarter of the work.
+
+\subsubsection*{Coaxial Wire}
+
+\begin{center}
+    \includegraphics*[height=4cm]{media/coaxial.png}
+\end{center}
+We can define four regions to apply Ampere's law:
+\begin{multicols}{2}
+    \begin{itemize}
+        \item $r<a$ 
+        \item $a<r<b$ 
+        \item $b<r<c$ 
+        \item $r>c$ 
+    \end{itemize}
+\end{multicols}
+\textbf{When $r<a$:}
+Since our Amperian loop lies within the inner conductor and does not enclose the full current $I$, we must use the current density to calculate the portion of current enclosed.
+\begin{equation*}
+    J=\frac{I}{A}=\frac{I}{\pi a^2}
+\end{equation*}
+\begin{align*}
+    \oint \vec{B} \cdot d\vec{l} &= \mu_0I_{enc} \\
+    B(2\pi r) &= \mu_0 JA_{enc} \\
+    B &= \frac{\mu_0}{2 \pi r} \frac{I\pi r^2}{\pi a^2} \\
+    &= \boxed{\frac{\mu_0Ir}{2 \pi a^2}}
+\end{align*}
+
+\textbf{When $a<r<b$:} We enclose current $I$ in a radius $r$.
+\begin{align*}
+    \oint \vec{B} \cdot d\vec{l} &= \mu_0I_{enc} \\
+    B(2\pi r) &= \mu_0 I \\
+    B &= \boxed{\frac{\mu_0 I}{2\pi r}}
+\end{align*}
+
+\textbf{When $b<r<c$:} Again, the Amperian loop lies within a conductor and does not enclose the full current. We must use current density. Note that the current is going in the negative direction, so we need to subract it from the current from the inside wire.
+\begin{equation*}
+    J=\frac{I}{A}=\frac{I}{\pi(c^2-b^2)}
+\end{equation*}
+\begin{align*}
+    \oint \vec{B} \cdot d\vec{l} &= \mu_0I_{enc} \\
+    B(2\pi r) &= \mu_0 (I-JA_{enc}) \\
+    B &= \frac{\mu_0}{2 \pi r} (I- \frac{I\pi (r^2-b^2)}{\pi (c^2-b^2)}) \\
+    &= \boxed{\frac{\mu_0I}{2 \pi r}(1-\frac{r^2-b^2}{c^2-b^2})}
+\end{align*}
+\textbf{When $r>c$:} We enclose zero current, so there is no magnetic field outside of the cable.
+
+\subsubsection*{Solenoids}
+
+A solenoid is a coil of wire In an ideal solenoid, there will be no edge effects, no resistance in the wires, the wire will be coiled with no gaps, and the magnetic field outside the coils of a solenoid will be zero. 
+
+In this case, we need to draw an Amperian loop shaped like a rectangle:
+\begin{center}
+    \includegraphics*[height=4cm]{media/solenoid.png}
+\end{center}
+The magnetic field contribution of the left and right edges are zero, since the magnetic field and the edges are orthogonal. The magnetic field outside of the solenoid is also zero, leaving the inside portion. The current enclosed by the Amperian loop is the current going through the loops times the number of loops, $N$. The number of loops per unit length is $n$
+\begin{align*}
+    \oint \vec{B} \cdot d\vec{l} &= \mu_0I_{enc} \\
+    B(w) &= \mu_0NI \\
+    B &= \boxed{\mu_0nI}
+\end{align*}
 \end{document}
