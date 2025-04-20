@@ -84,7 +84,7 @@ When making a ``thumbs up'' hand gesture, the thumb points in the direction of t
     \includegraphics[height=4cm]{media/rh2.png}
 \end{center}
 
-\subsection*{Moving Charges in Magentic Fields}
+\subsection*{Moving Charges in Magnetic Fields}
 
 A charged particle moving in a magnetic field experiences a force determined by the Lorentz force equation:
 
@@ -215,7 +215,7 @@ Notice that for all $d\vec{l}$, $\hat{r}$, the unit vector pointing from $d\vec{
     =& \boxed{\frac{\mu_0 IR^2}{2(R^2+h^2)^\frac{3}{2}}}
 \end{align*}
 
-Each $d\vec{B}$ vector is pointing out from the axis at an angle $\beta$. We can take the cosine of $d\vec{B}$ to get $d\vec{B}_x$, the x component of the magnetic field caused by $d\vec{l}$, using the following subsitutions:
+Each $d\vec{B}$ vector is pointing out from the axis at an angle $\beta$. We can take the cosine of $d\vec{B}$ to get $d\vec{B}_x$, the x component of the magnetic field caused by $d\vec{l}$, using the following substitutions:
 \begin{itemize}
     \item $r^2=R^2+h^2$ --- the distance between a point on the loop and the point we are calculating the magnetic field from.
     \item $\cos (\beta) = \frac{R}{\sqrt{R^2+h^2}}$ --- The angle $\beta$ is equal to the angle formed by $R$ and $r$ 
@@ -319,4 +319,14 @@ The magnetic field contribution of the left and right edges are zero, since the 
     B(w) &= \mu_0NI \\
     B &= \boxed{\mu_0nI}
 \end{align*}
+
+\subsubsection*{Toroids}
+
+A toroid is a wire coiled around a torus (doughnut). We can draw a Amperian loop in the shape of a circle inside the torus. If wire is wrapped around the torus $N$ times, we enclose $N \cdot I$ current.
+\begin{align*}
+    \oint \vec{B} \cdot d\vec{l} &= \mu_0I_{enc} \\
+    B(2 \pi r) &= \mu_0NI \\
+    B &= \boxed{\frac{\mu_0NI}{2 \pi r}}
+\end{align*}
+
 \end{document}
