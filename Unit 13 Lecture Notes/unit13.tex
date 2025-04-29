@@ -1,0 +1,141 @@
+\documentclass[12pt, titlepage]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{tcolorbox}
+\usepackage{parskip}
+\usepackage[]{fancyhdr}
+\usepackage{pgfplots}
+\usepackage{mdframed}
+\usepackage{multicol}
+\pgfplotsset{compat=1.18}
+\setlength{\headheight}{15pt}
+\tcbuselibrary{breakable}
+
+\title{Electromagnetic Induction}
+\author{Matthew Pan}
+\date{April 2025}
+
+\newtcolorbox{Problem}{colback=blue!5!white,colframe=blue!50!black,title=Problem, breakable=true}
+
+\begin{document}
+
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyhead[L]{Pan}
+\fancyhead[R]{\thepage}
+
+\maketitle
+
+\section*{13.1 Magnetic Flux}
+
+Flux was introduced in unit 8 as the amount of field passing perpendicularly through an area. We can apply the same concept to magnetic fields with the following equation:
+\begin{equation*}
+    \phi_B = \iint \vec{B} \cdot d\vec{A}
+\end{equation*}
+Don't confuse this with Gauss's Law for magnetism, which says that the flux through a closed area (think of a 3D solid with no openings) is zero. Here, the area does not have to be closed. For simplicity, College Board (and these notes) will write this equation with only one integral.
+
+\begin{Problem}
+    What is the magnetic flux through the loop of wire if 4 Amps of current is flowing through the straight wire at the bottom?
+    \begin{center}
+        \includegraphics*[height=4cm]{media/flux.png}
+    \end{center}
+
+    \tcblower
+    \textit{Solution. }
+    The magnetic field from a infinitely straight length of wire is $\frac{\mu_0 I}{2\pi r}$ (from the last unit), and $dA=Ldw$. We can also make the substitution $dw=dr$.
+    \begin{align*}
+        \phi_B &= \int \vec{B} \cdot d\vec{A} \\
+        &= \int \frac{\mu_0 I}{2\pi r}L dr \\
+        &= \frac{\mu_0 I}{2\pi} \int_{d}^{d+w} \frac{1}{r} dr \\
+        & = \frac{\mu_0 I}{2\pi} \ln r |_{d}^{d+w} = 5.52 \times 10^-8 \ Tm^2
+    \end{align*}
+\end{Problem}
+
+\section*{13.2 Electromagnetic Induction}
+\subsection*{Magnitude of Induced Current}
+In 13.2, we are introduced to Faraday's Law, which says that a changing magnetic flux induces an electromotive force in a system.
+\begin{equation*}
+    emf = -\frac{d\phi_B}{dt}
+\end{equation*}
+\begin{Problem}
+    The wire from the previous example now has a current $I(t) = C-Dt$ flowing through it. Calculate the magnitude of the induced emf generated around the loop at time $t=3s$ if $C=10A$ and $D=2A/s$.
+    \tcblower
+    \textit{Solution. }We can replace $I$ with $C-Dt$, and take the negative of the derivative of $\phi_B$ with respect to time, then solve at $t=3$
+    \begin{align*}
+        \phi_B &= \frac{\mu_0 I}{2\pi} \ln |\frac{d+w}{d}| \\
+        & = \frac{\mu_0 }{2\pi} \ln |\frac{d+w}{d}| (C-Dt) \\ \\
+        -\frac{d\phi_B}{dt} &= \frac{d}{dt} \left[\frac{\mu_0 }{2\pi} \ln |\frac{d+w}{d}| (C-Dt)\right] \\
+        & = \frac{\mu_0 D}{2\pi} \ln |\frac{d+w}{d}| \\
+        & = \boxed{1.758 \times 10^{-8} V}
+    \end{align*}
+\end{Problem}
+
+\subsection*{Direction of Induced Current}
+Lenz’s Law states that the direction of the induced EMF (and thus the induced current) is such that the magnetic field it creates opposes the change in magnetic flux that produced it. This opposition is represented by the negative sign in Faraday’s Law. For example, if the magnetic flux through a loop is decreasing, the induced current will produce a magnetic field in the same direction as the original field to oppose the decrease. Conversely, if the magnetic flux through a loop is increasing, the induced current will produce a magnetic field in the opposite direction as the original field to oppose the increase.
+
+\begin{Problem}
+    A conducting rod is sliding at a speed of $4 m/s$ along conducting rails that are $0.75m$ apart. The rails are attached to a $5\Omega$ resistor. The loop is inside a $250 mT$ magnetic field directed out of the page. What is the current generated in the resistor?
+    \begin{center}
+        \includegraphics*[height=4cm]{media/lenz.png}
+    \end{center}
+    \tcblower
+    \textit{Solution.} First, we must determine the flux enclosed by the circuit: 
+    \begin{equation*}
+        \phi_B = \int BdA = B\int dA = BA = BLW
+    \end{equation*}
+    Then, we can find the the emf. Everything is constant with respect to time except for $W$, and $\frac{dW}{dt} = v$:
+    \begin{align*}
+        emf &= -\frac{d\phi_B}{dt} \\
+        &= -\frac{d}{dt}\left[BLW\right] \\
+        &= -BLv \\ \\
+        I &= -\frac{BLv}{R} = 0.17A
+    \end{align*}
+    Since the area of the loop is increasing, the flux through the loop is also increasing. Therefore, the current generated should create a magnetic field in the opposite direction as the original field. Using the ``thumbs up'' right hand rule, we find that the current travels clockwise.
+\end{Problem}
+
+\section*{13.3 Induced Currents and Magnetic Forces}
+The induced current in a wire may also cause a force, described by the Lorentz force equation covered in the last unit:
+\begin{equation*}
+    \vec{F_B} = \int I(d\vec{l} \times \vec{B})
+\end{equation*}
+\begin{Problem}
+    Describe the force on the loop of wire in the following scenario.
+    \begin{center}
+        \includegraphics*[height=4cm]{media/force.png}
+    \end{center}
+
+    \textit{Solution. }We can find the electromotive force ($\epsilon$) induced by the changing magnetic flux, then apply the Lorentz force equation to the left side of the wire to find the force. We apply a modified Faraday's Law in the second equation to represent having multiple loops ($N$ is the number of loops).
+    \begin{equation*}
+        \phi_B=\int B \, dA = BA = Baw
+    \end{equation*}
+    \begin{align*}
+        |\epsilon| &= N|\frac{d\phi_B}{dt}| \\
+        &= N\frac{d(Baw)}{dt} = NBa\frac{dw}{dt} \\
+        &= NBav
+    \end{align*}
+    \begin{equation*}
+        I = \frac{\epsilon}{R} = \frac{NBav}{R}
+    \end{equation*}
+    \begin{align*}
+        \vec{F_B} &= \int I (d\vec{l} \times \vec{B}) \\
+        &= \frac{NB^2av}{R} \int_{0}^{a}dl= \boxed{\frac{NB^2a^2v}{R}}
+    \end{align*}
+\end{Problem}
+Notice how the strength of the magnetic force induced is like a resistive force, where the magnitude of the force is proportional to the velocity ($F_r=-kv$). We can apply this to model how a cart carrying a rectangular loop of wire moves through a magnetic field region that has the same width as the loop.
+\begin{align*}
+    ma &= F \\
+    ma &= \boxed{-\frac{NB^2a^2v}{R}}v
+\end{align*}
+For now, we can assign the constant $-k$ to the boxed expression above. This is negative because it is in the opposite direction as the velocity. We solve a differential equation by setting integration bounds so that the velocity at $t=0$ is $v_0$ and at time $t$ is $v(t)$.
+\begin{align*}
+    m\frac{dv}{dt} &= -kv \\
+    \frac{dv}{v} &= \frac{-k}{m} dt \\
+    \int_{v_0}^{v(t)} \frac{dv}{v} &= \int_{0}^{t} \frac{-k}{m}dt \\
+    \ln (\frac{v(t)}{v_0})&=-\frac{kt}{m} \\
+    \frac{v(t)}{v_0}&=e^{-\frac{kt}{m}} \\
+    v(t) &= v_0e^{-\frac{kt}{m}}
+\end{align*}
+
+\end{document}
