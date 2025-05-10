@@ -138,4 +138,75 @@ For now, we can assign the constant $-k$ to the boxed expression above. This is 
     v(t) &= v_0e^{-\frac{kt}{m}}
 \end{align*}
 
+\section*{13.4 Inductance}
+
+Inductance is the tendency of a conductor to resist a change in current.
+\begin{itemize}
+    \item When current is moving clockwise down a solenoid, a magnetic field pointing into the page is generated.
+    \item Suppose the current is being increased. This causes an increase in magnetic flux.
+    \item The change in magnetic flux causes a current to be induced that creates a magnetic field upwards to oppose that change in flux.
+    \item The induced magnetic field creates a current that is counterclockwise, moving upwards partially countering the effects of the increasing current.
+\end{itemize}
+In a solenoid, the formula for inductance is
+\begin{equation*}
+    L=\frac{N\phi_B}{I}
+\end{equation*}
+measured in Henry (Tesla meters squared per ampere). We can also substitute $\phi_B$ with $BA$ and then $B$ with $\mu_0 \frac{N}{l}I$, resulting in another equation for the inductance in a solenoid:
+\begin{equation*}
+    L= \frac{\mu_0N^2A}{l}
+\end{equation*}
+In capacitors, we could add a dielectric material between the two plates to increase its capacitance. In inductors, we can place a different material inside the loop to increase its inductance. To calculate the inductance, simply replace $\mu_0$ with the permeability of the core.
+\subsection*{Potential energy stored in an inductor}
+
+By connecting a battery, resistor, and inductor in series, we can determine the amount of potential energy an inductor has. 
+\begin{center}
+    \includegraphics*[height=4.5cm]{media/potentialenergy.png}
+\end{center}
+We can then apply Kirchhoff's Loop Law and manipulate the equation to show potential energy.
+\begin{align*}
+    & \epsilon - \Delta V_R - \epsilon_L=0 \\
+    & \epsilon - IR - L \frac{dI}{dt} =0 \\
+    & \epsilon \cdot I - IR \cdot I - L \frac{dI}{dt} \cdot I=0
+\end{align*}
+If $\epsilon I$ represents the power supplied to the circuit, and $I^2R$ represents the power dissipated by the resistor, then $LI\frac{dI}{dt}$ must be the power stored or dissipated by the inductor. We can integrate this with respect to current to find the potential energy stored by the inductor.
+\begin{align*}
+    P = \frac{dU_L}{dt} &= LI\frac{dI}{dt} \\
+    \int_{0}^{U_L} dU_L & = \int_{0}^{I}LI \, dI \\
+    U_L &= \boxed{\frac{1}{2}LI^2}
+\end{align*}
+
+\section*{13.5 LR Circuits}
+\subsection*{Behaviors of Inductors}
+A qualitative characterization the behavior of inductors in a circuit (like one shown above):
+\begin{itemize}
+    \item At $t=0$, the inductor acts as an open switch; no current flows through the resistor.
+    \item At $t>0$, the current through the inductor slowly approaches the current set by the battery and the resistor.
+    \item At very large values of $t$, the inductor acts like a closed switch.
+\end{itemize}
+
+We can calculate a more quantitative relationship by applying Kirchhoff's Loop Rule again but solving for $I$, the current, as a function of time.
+\begin{align*}
+    \epsilon - IR - L \frac{dI}{dt} &=0 \\
+    L\frac{dI}{dt} &= \epsilon - IR \\
+    \frac{dI}{\epsilon-IR}& =\frac{dt}{L} \\
+    \int_{0}^{I(t)}\frac{dI}{\epsilon-IR}& =\int_{0}^{t}\frac{dt}{L} \\
+    \frac{\ln \epsilon}{R}-\frac{\ln \epsilon-IR}{R}&=\frac{t}{L} \\
+    \ln \frac{\epsilon}{\epsilon-IR} &= \frac{Rt}{L}\\
+    \frac{\epsilon}{\epsilon-IR} &= e^{\frac{Rt}{L}}\\
+    & \dots \\
+    I(t) &= \boxed{\frac{\epsilon}{R}(1-e^{-\frac{Rt}{L}})}
+\end{align*}
+
+What if the battery is removed, leaving the inductor to discharge? We apply Kirchhoff's Loop Rule again, this time without the battery. We also assume the current is $\frac{\epsilon}{R}$ at time $t=0$.
+\begin{align*}
+    - IR - L \frac{dI}{dt} &=0 \\
+    L\frac{dI}{dt} &= -IR \\
+    \frac{dI}{I}&=\frac{-Rdt}{L} \\
+    \int_{\frac{\epsilon}{R}}^{I(t)}\frac{dI}{I}&=\int_{0}^{t}\frac{-Rdt}{L} \\
+    \ln I - \ln \frac{\epsilon}{R}&=e^{\frac{-Rdt}{L}} \\
+    & \dots \\
+    I(t) &= \boxed{\frac{\epsilon}{R}e^{-\frac{Rt}{L}}}
+\end{align*}
+
+
 \end{document}
