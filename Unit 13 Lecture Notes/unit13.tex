@@ -8,9 +8,14 @@
 \usepackage{pgfplots}
 \usepackage{mdframed}
 \usepackage{multicol}
+\usepackage{multirow}
 \pgfplotsset{compat=1.18}
 \setlength{\headheight}{15pt}
 \tcbuselibrary{breakable}
+
+\setlength{\arrayrulewidth}{0.5mm}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{2.0}
 
 \title{Electromagnetic Induction}
 \author{Matthew Pan}
@@ -30,7 +35,7 @@
 
 \section*{13.1 Magnetic Flux}
 
-Flux was introduced in unit 8 as the amount of field passing perpendicularly through an area. We can apply the same concept to magnetic fields with the following equation:
+Flux was introduced in Unit 8 as the amount of field passing perpendicularly through an area. We can apply the same concept to magnetic fields with the following equation:
 \begin{equation*}
     \phi_B = \iint \vec{B} \cdot d\vec{A}
 \end{equation*}
@@ -55,7 +60,7 @@ Don't confuse this with Gauss's Law for magnetism, which says that the flux thro
 
 \section*{13.2 Electromagnetic Induction}
 \subsection*{Magnitude of Induced Current}
-In 13.2, we are introduced to Faraday's Law, which says that a changing magnetic flux induces an electromotive force in a system.
+In 13.2, we are introduced to Faraday's Law, which states that a changing magnetic flux induces an electromotive force in a system.
 \begin{equation*}
     emf = -\frac{d\phi_B}{dt}
 \end{equation*}
@@ -85,7 +90,7 @@ Lenz’s Law states that the direction of the induced EMF (and thus the induced 
     \begin{equation*}
         \phi_B = \int BdA = B\int dA = BA = BLW
     \end{equation*}
-    Then, we can find the the emf. Everything is constant with respect to time except for $W$, and $\frac{dW}{dt} = v$:
+    Then, we can find the emf. Everything is constant with respect to time except for $W$, and $\frac{dW}{dt} = v$:
     \begin{align*}
         emf &= -\frac{d\phi_B}{dt} \\
         &= -\frac{d}{dt}\left[BLW\right] \\
@@ -151,7 +156,7 @@ In a solenoid, the formula for inductance is
 \begin{equation*}
     L=\frac{N\phi_B}{I}
 \end{equation*}
-measured in Henry (Tesla meters squared per ampere). We can also substitute $\phi_B$ with $BA$ and then $B$ with $\mu_0 \frac{N}{l}I$, resulting in another equation for the inductance in a solenoid:
+measured in Henry ($T \cdot m^2/A$). We can also substitute $\phi_B$ with $BA$ and then $B$ with $\mu_0 \frac{N}{l}I$, resulting in another equation for the inductance in a solenoid:
 \begin{equation*}
     L= \frac{\mu_0N^2A}{l}
 \end{equation*}
@@ -177,7 +182,7 @@ If $\epsilon I$ represents the power supplied to the circuit, and $I^2R$ represe
 
 \section*{13.5 LR Circuits}
 \subsection*{Behaviors of Inductors}
-A qualitative characterization the behavior of inductors in a circuit (like one shown above):
+A qualitative characterization of inductor behavior in a circuit (like one shown above):
 \begin{itemize}
     \item At $t=0$, the inductor acts as an open switch; no current flows through the resistor.
     \item At $t>0$, the current through the inductor slowly approaches the current set by the battery and the resistor.
@@ -203,10 +208,62 @@ What if the battery is removed, leaving the inductor to discharge? We apply Kirc
     L\frac{dI}{dt} &= -IR \\
     \frac{dI}{I}&=\frac{-Rdt}{L} \\
     \int_{\frac{\epsilon}{R}}^{I(t)}\frac{dI}{I}&=\int_{0}^{t}\frac{-Rdt}{L} \\
-    \ln I - \ln \frac{\epsilon}{R}&=e^{\frac{-Rdt}{L}} \\
+    \ln I - \ln \frac{\epsilon}{R}&=e^{\frac{-Rt}{L}} \\
     & \dots \\
     I(t) &= \boxed{\frac{\epsilon}{R}e^{-\frac{Rt}{L}}}
 \end{align*}
+
+\section*{13.6 LC Circuits}
+
+A review of the basic properties of capacitors and inductors:
+\begin{itemize}
+    \item A capacitor stores is energy in a electric field, whereas an inductor stores its energy in a magnetic field.
+    \item A capactior acts like a closed switch when current initially flows in the circuit and a open switch when current has been flowing for a long amount of time.
+    \item An inductor acts like a open switch when current initially flows inside the circuit (resisting a change in current) and a closed switch when current has been flowing for a long amount of time.
+\end{itemize}
+
+Let's take a look at the following circuit. In this circuit, the capacitor is fully charged, and no current is flowing through the wire. 
+\begin{center}
+    \includegraphics*[height = 2.5cm]{media/LC.png}
+\end{center}
+
+Initially, energy is stored inside the electric field in the capacitor. When the switch is closed, current begins to flow between the capacitor plates, causing a magnetic field to be produced inside the inductor. As the voltage between the plates of the capacitor decrease, the energy stored in the electric field decreases, while the increase in current causes the energy stored in the magnetic field of the inductor to increase. Since we assume the wire to be a perfect conductor, no energy is lost, and we can apply the conservation of potential energy with the components.
+
+The following equation shows how when the energy stored in the electric field is at its maximum, there is no energy stored in the magnetic field, and vice versa.
+\begin{align*}
+    U_{Cmax} & = U_{Lmax} \\
+    \frac{1}{2}CV_{max}^2 &= \frac{1}{2}LI_{max}^2
+\end{align*}
+
+\begin{center}
+    \includegraphics*[height=6cm]{media/LC_graphic.png}
+\end{center}
+
+\subsection*{SHM of LC Circuits}
+
+The oscillations between the magnetic field and electric field can be described as simple harmonic motion. We can use Kirchhoff's Loop rule to derive this.
+\begin{align*}
+    \Delta V_C-\Delta V_L & = 0 \\
+    L\frac{dI}{dt} &= -\frac{q}{C} \\
+    L\frac{d^2q}{dt^2} &= -\frac{q}{C}
+\end{align*}
+
+This looks very similar to the other simple harmonic motion equations from mechanics:
+\begin{center}
+    \begin{tabular}{ |p{4cm}|p{6cm}| }
+        \hline
+        \multicolumn{2}{|c|}{Simple Harmonic Motion} \\
+        \hline
+        Mass and Spring & $\frac{d^2x}{dt^2} = -\frac{k}{m}x$ \\
+        Simple Pendulums & $\frac{d^2\theta}{dt^2} = -\frac{g}{L} \theta $ \\
+        LC Circuits & $\frac{d^2q}{dt^2} =-\frac{1}{LC}q$\\
+        \hline
+    \end{tabular}
+\end{center}
+
+Applying this to the general equation for simple harmonic motion \\ ($\frac{d^2x}{dt^2} = -\omega^2x$), we get that $\omega$, the angular frequency, is $\frac{1}{\sqrt{LC}}$. Therefore, the period is $2\pi \sqrt{LC}$.
+
+
 
 
 \end{document}
